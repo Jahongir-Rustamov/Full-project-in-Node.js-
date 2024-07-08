@@ -1,0 +1,38 @@
+{{#if Myproducts.length}}
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-3 mb-4">
+    {{#each Myproducts}}
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{{this.image}}" alt="error with upload img" />
+          <div class="card-body">
+            <p class="card-text fw-bold">{{this.description}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="avatar">
+                <p
+                  style="text-transform: capitalize;color:darkviolet;font-style:italic"
+                >Author: {{this.user.FirstName}} {{this.user.LastName}}</p>
+              </div>
+              <small class="text-body-secondary fs-5">{{this.price}}.00$</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+{{else}}
+  {{#if @root.token}}
+    <div
+      class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
+    >
+      <p class="fs-1">No products</p>
+    </div>
+  {{else}}
+    <div
+      class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
+    >
+      <p class="fs-1">No products</p>
+      <p class="fs-3">You must register first</p>
+    </div>
+  {{/if}}
+{{/if}}
